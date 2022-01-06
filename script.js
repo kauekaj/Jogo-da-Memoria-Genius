@@ -39,7 +39,7 @@ let lightColor = (element, number) => {
 let checkOrder = () => {
     for(let i in clickOrder) {
         if(clickOrder[i] != order[i]) {
-            lose();
+            gameOver();
             break;
         }
     }
@@ -60,3 +60,23 @@ let click = (color) => {
 
     checkOrder();
 }
+
+//Função que retorna a cor
+let createColorElement = () => {
+    if(color == 0) {
+        return green;
+    } else if(color == 1) {
+        return red;
+    } else if(color == 2) {
+        return yellow;
+    } else if(color == 3) {
+        return blue;
+    }
+}
+
+//Função para próximo nível do jogo
+let nextLevel = () => {
+    score++;
+    shuffOrder();
+}
+
