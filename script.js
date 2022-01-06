@@ -56,9 +56,9 @@ let click = (color) => {
 
     setTimeout(() => {
         createColorElement(color).classList.remove('selected');
-    })
+        checkOrder();
+    }, 250);
 
-    checkOrder();
 }
 
 //Função que retorna a cor
