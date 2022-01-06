@@ -14,12 +14,12 @@ const yellow = document.querySelector('#yellow')
 
 //Cria ordem aleatória de cores
 let shuffOrder = () => {
-    let color = Math.floor(Math.random() * 4);
+    let colorOrder = Math.floor(Math.random() * 4);
     order[order.length] = colorOrder;
     clickOrder = [];
 
     for(let i in order) {
-        let elementor = createColorElement(order[i]);
+        let elementColor = createColorElement(order[i]);
         lightColor(elementColor, Number(i) + 1);
     }
 }
@@ -44,7 +44,7 @@ let checkOrder = () => {
         }
     }
     if(clickOrder.length == order.length) {
-        alert(`Pontuação: ${score}\nVocê acertou! Iniciando próximo nível.`);
+        alert(`Pontuação: ${score}\n Você acertou! Iniciando próximo nível.`);
         nextLevel();
     }
 }
@@ -57,12 +57,12 @@ let click = (color) => {
     setTimeout(() => {
         createColorElement(color).classList.remove('selected');
         checkOrder();
-    }, 250);
+    }, 200);
 
 }
 
 //Função que retorna a cor
-let createColorElement = () => {
+let createColorElement = (color) => {
     if(color == 0) {
         return green;
     } else if(color == 1) {
@@ -82,13 +82,14 @@ let nextLevel = () => {
 
 //Função para Game Over
 let gameOver = () => {
-    alert(`Pontuação ${score}!\nVocê perdeu o jogo.\nClique em ok para iniciar uma nova partida.`);
+    alert(`Pontuação ${score}!\n Você perdeu o jogo.\nClique em ok para iniciar uma nova partida.`);
     order = [];
     clickOrder = [];
 
     playGame()
 }
 
+//Função de início do jogo
 let playGame = () => {
     alert('Bem vindo ao Gênesis! Iniciando novo jogo.')
     score = 0;
@@ -96,9 +97,17 @@ let playGame = () => {
     nextLevel();
 }
 
+
+//Eventos de clique para as cores
 green.addEventListener('click', click(0));
 red.addEventListener('click', click(1));
 yellow.addEventListener('click', click(2));
 blue.addEventListener('click', click(3));
 
+green.onclick = () => click(0);
+red.onclick = () => click(1);
+yellow.onclick = () => click(2);
+blue.onclick = () => click(3);
+
+//Início do jogo
 playGame();
