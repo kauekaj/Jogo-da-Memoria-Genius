@@ -35,3 +35,16 @@ let lightColor = (element, number) => {
     });
 }
 
+//Checa se os botões clicados são os mesmos da ordem gerada no jogo
+let checkOrder = () => {
+    for(let i in clickOrder) {
+        if(clickOrder[i] != order[i]) {
+            lose();
+            break;
+        }
+    }
+    if(clickOrder.length == order.length) {
+        alert(`Pontuação: ${score}\nVocê acertou! Iniciando próximo nível.`);
+        nextLevel();
+    }
+}
