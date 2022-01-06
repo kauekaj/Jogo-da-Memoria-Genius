@@ -80,3 +80,25 @@ let nextLevel = () => {
     shuffOrder();
 }
 
+//Função para Game Over
+let gameOver = () => {
+    alert(`Pontuação ${score}!\nVocê perdeu o jogo.\nClique em ok para iniciar uma nova partida.`);
+    order = [];
+    clickOrder = [];
+
+    playGame()
+}
+
+let playGame = () => {
+    alert('Bem vindo ao Gênesis! Iniciando novo jogo.')
+    score = 0;
+    
+    nextLevel();
+}
+
+green.addEventListener('click', click(0));
+red.addEventListener('click', click(1));
+yellow.addEventListener('click', click(2));
+blue.addEventListener('click', click(3));
+
+playGame();
